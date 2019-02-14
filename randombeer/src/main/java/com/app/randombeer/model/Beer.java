@@ -3,10 +3,16 @@
  */
 package com.app.randombeer.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.TableGenerator;
 
 /**
  * @author 35389
@@ -16,9 +22,14 @@ import javax.persistence.Id;
 public class Beer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	/*@TableGenerator(name = "employee_gen", table = "id_gen", pkColumnName = "gen_name", valueColumnName = "gen_val", allocationSize = 1)
+	@Id
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "employee_gen")*/
 	private Long id;
 	private String description;
 	private String alcoholPercentage;
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = BreweryDetails.class)
+	@JoinColumn(name="addressId")
 	private BreweryDetails address;
 
 	/**

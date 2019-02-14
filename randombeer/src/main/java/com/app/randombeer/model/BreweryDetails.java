@@ -3,6 +3,7 @@
  */
 package com.app.randombeer.model;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,24 +12,30 @@ import javax.persistence.Id;
  * @author 35389
  *
  */
+@Entity(name = "BreweryDetails")
 public class BreweryDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Long addressId;
 	private String name;
 	private String city;
 	private String state;
 	private String country;
 
 	/**
-	 * @param id
+	 * 
+	 */
+	public BreweryDetails() {
+	}
+
+	/**
+	 * @param address_id
 	 * @param name
 	 * @param city
 	 * @param state
 	 * @param country
 	 */
-	public BreweryDetails(Long id, String name, String city, String state, String country) {
-		this.id = id;
+	public BreweryDetails(String name, String city, String state, String country) {
 		this.name = name;
 		this.city = city;
 		this.state = state;
@@ -38,15 +45,15 @@ public class BreweryDetails {
 	/**
 	 * @return the id
 	 */
-	public Long getId() {
-		return id;
+	public Long getAddressId() {
+		return addressId;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Long id) {
-		this.id = id;
+	public void setAddressId(Long id) {
+		this.addressId = id;
 	}
 
 	/**
@@ -112,7 +119,7 @@ public class BreweryDetails {
 	 */
 	@Override
 	public String toString() {
-		return "BreweryDetails [id=" + id + ", name=" + name + ", city=" + city + ", state=" + state + ", country="
+		return "BreweryDetails [id=" + addressId + ", name=" + name + ", city=" + city + ", state=" + state + ", country="
 				+ country + "]";
 	}
 
