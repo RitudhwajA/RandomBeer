@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="/css/main.css" />
+<title th:text="RandomBeerApp"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Random Beer APP</a>
+      <a th:href="@{/beers}" class="btn btn-primary">Next Random Beer</a>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Heading Row -->
+    <div class="row align-items-center my-5">
+      <div class="col-lg-7">
+        <img class="img-fluid rounded mb-4 mb-lg-0" src="http://placehold.it/900x400" alt="">
+      </div>
+      <!-- /.col-lg-8 -->
+      <div th:if="${beer}">
+        <h1 class="font-weight-light" th:text="${beer.name}"></h1>
+        <p th:text="'Description: '+${beer.description}"></p>
+        <p th:text="'Alcohol Percentage: '+${beer.alcoholPercentage}"></p>
+     <!--   <p th:text="${beer.address!=null}?{beer.address.name}:'not speified'"></p>
+        <p th:text="'Address: '+${beer.address!=null}?{beer.address.city}+','+{beer.address.country}:'not specified'"></p> --> 
+        <p th:text="${beer.address.name}"></p>
+        <p th:text="'Address: '+${beer.address.city}+','+${beer.address.country}"></p>
+      </div>
+
+      <!-- /.col-md-4 -->
+    </div>
+    <!-- /.row -->
+      <!-- /.col-md-4 -->
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white"></p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+
+</body>
+
+
+
+
+</html>
