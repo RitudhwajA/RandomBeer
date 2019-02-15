@@ -1,6 +1,5 @@
 package com.app.randombeer.controller;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,7 @@ import com.app.randombeer.service.BeerService;
 
 @RestController
 public class RandomBeerController {
-	
+
 	@Autowired
 	BeerService beerService;
 
@@ -28,12 +27,11 @@ public class RandomBeerController {
 		Optional<Beer> beer = beerService.getBeerbyID(id);
 		if (!beer.isPresent())
 			return ResponseEntity.notFound().build();
-		return new ResponseEntity<Beer>(beer.get(),HttpStatus.OK);
+		return new ResponseEntity<Beer>(beer.get(), HttpStatus.OK);
 	}
-	
 
-	@GetMapping("/beers")
-	public ResponseEntity<List<Beer>> getAllBeers(){
-		return new ResponseEntity<List<Beer>>(beerService.getAllBeers(),HttpStatus.OK);
+	@GetMapping("/beers/count")
+	public ResponseEntity<Long> getCount() {
+		return new ResponseEntity<Long>(beerService.getCount(), HttpStatus.OK);
 	}
 }

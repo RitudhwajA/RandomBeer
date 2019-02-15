@@ -3,7 +3,6 @@
  */
 package com.app.randombeer.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,17 +27,14 @@ public class BeerServiceImpl implements BeerService {
 		// TODO Auto-generated constructor stub
 	}
 
-	/* (non-Javadoc)
-	 * @see com.app.randombeer.service.BeerService#getAllBeers()
-	 */
-	@Override
-	public List<Beer> getAllBeers() {
-		return beerDao.findAll();
-	}
-
 	@Override
 	public Optional<Beer> getBeerbyID(Long id) {
 		return beerDao.findById(id);
+	}
+
+	@Override
+	public Long getCount() {
+		return beerDao.count();
 	}
 
 }

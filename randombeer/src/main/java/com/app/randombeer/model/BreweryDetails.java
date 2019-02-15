@@ -15,11 +15,10 @@ import javax.persistence.Id;
 @Entity(name = "BreweryDetails")
 public class BreweryDetails {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long addressId;
 	private String name;
 	private String city;
-	private String state;
 	private String country;
 
 	/**
@@ -32,13 +31,11 @@ public class BreweryDetails {
 	 * @param address_id
 	 * @param name
 	 * @param city
-	 * @param state
 	 * @param country
 	 */
-	public BreweryDetails(String name, String city, String state, String country) {
+	public BreweryDetails(String name, String city, String country) {
 		this.name = name;
 		this.city = city;
-		this.state = state;
 		this.country = country;
 	}
 
@@ -85,20 +82,6 @@ public class BreweryDetails {
 	}
 
 	/**
-	 * @return the state
-	 */
-	public String getState() {
-		return state;
-	}
-
-	/**
-	 * @param state the state to set
-	 */
-	public void setState(String state) {
-		this.state = state;
-	}
-
-	/**
 	 * @return the country
 	 */
 	public String getCountry() {
@@ -119,8 +102,7 @@ public class BreweryDetails {
 	 */
 	@Override
 	public String toString() {
-		return "BreweryDetails [id=" + addressId + ", name=" + name + ", city=" + city + ", state=" + state + ", country="
-				+ country + "]";
+		return "BreweryDetails [id=" + addressId + ", name=" + name + ", city=" + city + ", country=" + country + "]";
 	}
 
 }

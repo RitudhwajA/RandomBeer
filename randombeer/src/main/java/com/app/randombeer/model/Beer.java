@@ -10,9 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
-import javax.persistence.TableGenerator;
 
 /**
  * @author 35389
@@ -21,15 +19,13 @@ import javax.persistence.TableGenerator;
 @Entity(name = "Beer")
 public class Beer {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	/*@TableGenerator(name = "employee_gen", table = "id_gen", pkColumnName = "gen_name", valueColumnName = "gen_val", allocationSize = 1)
-	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "employee_gen")*/
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private String name;
 	private String description;
 	private String alcoholPercentage;
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = BreweryDetails.class)
-	@JoinColumn(name="addressId")
+	@JoinColumn(name = "addressId")
 	private BreweryDetails address;
 
 	/**
@@ -40,12 +36,13 @@ public class Beer {
 	}
 
 	/**
-	 * @param id
+	 * @param name
 	 * @param description
 	 * @param alcoholPercentage
-	 * @param location
+	 * @param address
 	 */
-	public Beer(String description, String alcoholPercentage, BreweryDetails address) {
+	public Beer(String name, String description, String alcoholPercentage, BreweryDetails address) {
+		this.name = name;
 		this.description = description;
 		this.alcoholPercentage = alcoholPercentage;
 		this.address = address;
@@ -63,6 +60,20 @@ public class Beer {
 	 */
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**
@@ -114,8 +125,8 @@ public class Beer {
 	 */
 	@Override
 	public String toString() {
-		return "Beer [id=" + id + ", description=" + description + ", alcoholPercentage=" + alcoholPercentage
-				+ ", address=" + address + "]";
+		return "Beer [id=" + id + ", name=" + name + ", description=" + description + ", alcoholPercentage="
+				+ alcoholPercentage + ", address=" + address + "]";
 	}
 
 }

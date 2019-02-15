@@ -3,7 +3,6 @@
  */
 package com.app.randombeer.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import com.app.randombeer.model.Beer;
@@ -13,9 +12,9 @@ import com.app.randombeer.model.Beer;
  *
  */
 public interface BeerService {
-	
-	List<Beer> getAllBeers();
-	
+
+	Long getCount();
+
 	Optional<Beer> getBeerbyID(Long id);
 
 }
